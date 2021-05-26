@@ -32,7 +32,8 @@
               "src/assets/fontawesome-pro-master/web/css/all.min.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/typer.min.js"
             ]
           },
           "configurations": {
@@ -95,9 +96,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/bootstrap/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/nav.js",
+              "src/assets/bootstrap/bootstrap.min.js"
+            ]
           }
         },
         "lint": {

@@ -1,32 +1,464 @@
+<div id="toup" class="toup"><i class="fas fa-angle-up"></i></div>
 <header class="toolbar">
     <div class="logo">
-        <h3>PortFolio</h3>
+        <a href="." target="_self">{{title}}</a>
     </div>
     <nav>
-        <ul class="nav_links">
+        <ul id="nlink" class="nav_links">
             <div class="marker"></div>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Skills</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Team</a></li>
+            <li><a (click)="toHome()" class="h active" id="home">Home</a></li>
+            <li><a (click)="toAboutUs()" class="au" id="aboutme">About</a></li>
+            <li><a (click)="toServices()" class="se" id="services">Services</a></li>
+            <li><a (click)="toSkills()" class="s" id="skills">Skills</a></li>
+            <li><a (click)="toProjects()" class="p" id="projects">Projects</a></li>
+            <li><a (click)="toTeam()" class="t" id="team">Team</a></li>
         </ul>
     </nav>
     <div>
-        <a href="#" class="contact">Contact us</a>
+        <a (click)="toContactUs()" id="contactus" class="contact">Contact us</a>
     </div>
 </header>
-<section class="main">
-    <div class="intro">
+<section class="main" id="h">
+    <div class="scrolldown"><span>Scroll Down </span><i class="fas fa-angle-right"></i><i
+            class="fas fa-angle-right"></i></div>
+    <div class="intro" id="intro">
         <h3>Hey, I'm<span>Kunal Jain</span></h3>
+        <h4>A <span id="animate"></span></h4>
     </div>
-    <div class="image">
-        <h1>some stuff</h1>
+    <div class="image" id="image">
+        <img src="../assets/4.png" class="img-responsive" alt="hey">
     </div>
 </section>
-<section class="about">
+<section class="about" id="au">
+    <h1 class="shead wim">who i am</h1>
+    <h2 class="titles">About me</h2>
 
+    <div class="box container">
+        <p class="text-justify"> A dedicated, hardworking and energetic college student pursuing a B.Tech in Computer
+            Science Engineering at LNCT, Bhopal. A FullStack Developer and programmer seeking to leverage acquired academic knowledge to practical use.
+            Recently completed the Google IT Support
+            Professional Certificate – an eight-month intensive IT support program that covers
+            troubleshooting, customer service, networking, operating systems, system administration
+            and IT security, including that I completed two specializations yet.<br><br>Nowadays seeking for an internship
+            opportunity in field of Full Stack Developer, UI/UX Designing.</p>
+        <div class="panel row">
+            <div class="col-md-6 center col-12">
+            <button (click)="toContactUs()"><i class="fas fa-paper-plane"></i> Hire me</button>
+            </div>
+            <!-- <div class="col-md-4 center col-12">
+                <button><i class="fab fa-whatsapp"></i> Drop a message</button>
+                </div> -->
+            <div class="col-md-6 center col-12">
+            <button><i class="fas fa-file-download"></i> Download Resume</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="services" id="se">
+    <h1 class="shead wic">what i can</h1>
+    <h2 class="titles">My Services</h2>
+    <div class="boxes">
+        <div class="container">
+            <div class="row">
+                <div class="inner col-lg-6 col-md-12 col-12">
+                    <div class="box s1">
+                        <div class="photo" data-text="FullStack Development"><i class="far fa-window"></i></div>
+                        <div class="content">
+                            <h1 class="text-right">FullStack Development</h1>
+                            <p class="text-right">I develop web applications using Angular as frontend framework, Java EE, Hibernate, REST API, SpringBoot MVC as intermediary and MySQL as backend, also learning about NoSQL backend environment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner col-lg-6 col-md-12 col-12">
+                    <div class="box s2">
+                        <div class="photo" data-text="Backend Development"><i class="fas fa-database"></i></div>
+                        <div class="content">
+                            <h1 class="text-right">Backend Development</h1>
+                            <p class="text-right">I do server side development, scripting and building a database according to data they need to store and REST API URL breakpoints in term to integrate backend with frontend.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="inner col-lg-6 col-12">
+                    <div class="box s3">
+                        <div class="photo" data-text="Frontend Designing"><i class="fas fa-code"></i></div>
+                        <div class="content">
+                            <h1 class="text-right">Frontend Designing</h1>
+                            <p class="text-right">I develop a frontend application using Angular in terms to develop a single page application, use Sass for styling and jQuery for functionality and to make it more attractive, also Bootstrap to develop a responsive frontend layout.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner col-lg-6 col-12">
+                    <div class="box s4">
+                        <div class="photo" data-text="UI/UX Designing"><i class="fas fa-palette"></i></div>
+                        <div class="content">
+                            <h1 class="text-right">UI/UX Designing</h1>
+                            <p class="text-right"><br>I use Adobe XD and Figma for designing templates and prototypes, I love to design for best view and experience user get after every visit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="box">
+            <div class="photo" data-text="UI/UX Designing"><i class="fas fa-palette"></i></div>
+            <div class="content">
+                <h1>UI/UX Designing</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+        </div> -->
+    </div>
+</section>
+<section class="skills" id="s">
+    <h1 class="shead wik">what i have</h1>
+    <div class="both container-fluid">
+        <div class="row">
+            <div class="smain col-lg-6 col-12">
+                <h2 class="titles">My skills</h2>
+                <p>
+                    As I am a FullStack Developer so i have solid grasp on HTML, CSS, JavaScript and I use Angular framework to develop a single page frontend application, jQuery
+                    for functionalities and awesome animations, Sass for styling and Java EE with SpringBoot MVC and Hibernate framework as intermediary between frontend and backend. For backend I use
+                    MySQL Database and REST API for URL breakpoint connections, also learning about NoSQL backend environment. Before a fullstack developer I am a Programmer at first place I can program in C/C++, Java SE, Python 3,
+                    and a little bit C#. Also I started to use Adobe XD and Figma for designing UI/UX Designs and prototypes.
+                </p>
+            </div>
+            <div class="visual col-lg-6 col-12">
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name">
+                            <i class="fab fa-html5" style="color: #e34c26;"></i>HTML 5
+                        </div>
+                        <div class="percent">
+                            {{s.html}}%
+                        </div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings html"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name">
+                            <i class="fab fa-css3-alt" style="color: #264de4;"></i> CSS 3 / <i style="color:#CD6799"
+                                class="fab fa-sass"> </i> Sass
+                        </div>
+                        <div class="percent">
+                            {{s.css}}%
+                        </div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings css"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name">
+                            <i class="fab fa-js-square" style="color: #F0DB4F;"></i>JavaScript / jQuery
+                        </div>
+                        <div class="percent">{{s.js}}%</div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings js"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name">
+                            <i class="fab fa-angular" style="color: #B52E31;"></i>Angular 9+
+                        </div>
+                        <div class="percent">{{s.angular}}%</div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings angular"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name">
+                            <i class="fas fa-database" style="color: rgb(117, 117, 117);"></i>MySQL
+                        </div>
+                        <div class="percent">{{s.sql}}%</div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings sql"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name">
+                            <i class="fab fa-java" style="color: #5382a1;"></i>Java SE / Java EE
+                        </div>
+                        <div class="percent">{{s.java}}%</div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings java"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name">
+                            <i class="fab fa-python" style="color: #306998"></i>Python 3
+                        </div>
+                        <div class="percent">{{s.python}}%</div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings python"></div>
+                    </div>
+                </div>
+                <!-- <div class="skill">
+                <div class="s_title">
+                    <div class="name"><i class="fab fa-node-js" style="color: #3C873A"></i>Node.js</div>
+                    <div class="percent">{{s.node}}%</div>
+                </div>
+                <div class="bar">
+                    <div class="fillings node"></div>
+                </div>
+            </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+<section class="projects" id="p">
+    <h1 class="shead wid">what i done</h1>
+    <div class="box">
+        <h2 class="titles">My projects</h2>
+        <div class="project-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 center col-12">
+                        <div class="project-main pro3">
+                            <div class="project p3">
+                            </div>
+                            <div class="caption">
+                                <h2>AccSoftware</h2>
+                                <p>An account management software where you can manage your daily expenses and source of incomes. It has various features by which you can analyse your every month expenses and manage it.</p>
+                                <div class="tech">
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Angular</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Sass</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">jQuery</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Spring</div><br>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Java</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">MySQL</div>
+                                </div>
+                                <a href="https://github.com/kunal2899/AccSoftware" class="float-right">Check it out<i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 center col-12">
+                        <div class="project-main pro1">
+                            <div class="project p1">
+                            </div>
+                            <div class="caption">
+                                <h2>AcuteVision</h2>
+                                <p>A smart attendance application available for both students and teachers where student can track their attendance status in every aspect and teacher can take attendance just by one click through face recognition.</p>
+                                <div class="tech">
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Angular</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Sass</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">jQuery</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Python</div><br>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Django</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">OpenCV</div>
+                                </div>
+                                <a class="float-right" href="https://github.com/kunal2899/acutevision">Check it out<i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 center col-12">
+                        <div class="project-main pro2">
+                            <div class="project p2">
+                            </div>
+                            <div class="caption">
+                                <h2>GradAlly</h2>
+                                <p>A portal designed for students where they can buy/sell used books, the aim of developing this to unite students so they can found everything need at one place.</p>
+                                <div class="tech">
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">HTML</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">CSS</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">JavaScript</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Java</div><br>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Spring</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1">MySQL</div>
+                                </div>
+                                <a class="float-right" href="https://github.com/kunal2899/gradally">Check it out<i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="project p3">
+
+            </div> -->
+        </div>
+    </div>
+</section>
+<section class="teams" id="t">
+    <h1 class="shead wwm">Who's with me</h1>
+    <h2 class="titles">
+        My team</h2>
+    <div class="carousel owl-carousel container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-12 center">
+                <div class="card c1">
+                    <div class="box">
+                        <div class="image">
+                            <img src="../assets/team/kratik.jpg" style="transform: scale(1.5);" alt="">
+                        </div>
+                        <div class="text">
+                            Kratik Wadekar</div>
+                        <p>
+                            B.Tech CSE<br>
+                            Full Stack Developer
+                        </p>
+                        <div class="sicons">
+                            <a target="_blank" href="https://www.facebook.com/kratik.wadekar"><i
+                                    class="fab fa-facebook"></i></a>
+                            <a target="_blank" href="https://twitter.com/KratikW"><i class="fab fa-twitter"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/kratik_wadekar/"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.github.com/Kratik007"><i class="fab fa-github"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/in/kratik-wadekar-9818551a0/"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-12 center">
+                <div class="card c2">
+                    <div class="box">
+                        <div class="image">
+                            <img src="../assets/team/mayank.jpg" style="transform: translate(-15px,10px) scale(2);" alt="">
+                        </div>
+                        <div class="text">
+                            Mayank Sharma</div>
+                        <p>B.Tech CSE<br>
+                            Full Stack Developer</p>
+                        <div class="sicons">
+                            <a target="_blank" href="https://www.facebook.com/profile.php?id=100063397485461"><i
+                                    class="fab fa-facebook"></i></a>
+                            <!-- <a target="_blank" href="https://twitter.com/kunaljain_2000"><i class="fab fa-twitter"></i></a> -->
+                            <a target="_blank" href="https://www.instagram.com/mynk._.sharma/"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.github.com/mynk26"><i class="fab fa-github"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/in/mayank-sharma-a634b71ab/"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-12 center">
+                <div class="card c3">
+                    <div class="box">
+                        <div class="image">
+                            <!-- <img src="../assets/team/muskan.jpg"
+                             style="width: auto; transform: translateX(-80px);" alt=""> -->
+                            <i style="font-size: 6em; margin-top: 25px;" class="fas fa-question"></i>
+                        </div>
+                        <div class="text">
+                            Finding someone</div>
+                        <p> You want to in ?
+                            <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+                        </p>
+                        <input type="button" style="cursor: pointer;" (click)="toContactUs()" class="apply" value="Drop me a message">
+                        <!-- <div class="sicons">
+                            <a target="_blank" href="https://www.facebook.com/profile.php?id=100003961350556"><i
+                                    class="fab fa-facebook"></i></a>
+                            <a target="_blank" href="https://twitter.com/kunaljain_2000"><i class="fab fa-twitter"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/toosassy._.foryou/"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.github.com/MuskanG22"><i class="fab fa-github"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/in/muskan-g-107579140/"><i
+                                    class="fab fa-linkedin"></i></a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="contactus" id="cu">
+    <h1 class="shead gito">Get in touch</h1>
+    <div class="both">
+        <div class="cus">
+            <h2 class="titles">Contact me</h2>
+            <div class="cont">
+                <a><i class="fas fa-location-arrow"></i>Bhopal, INDIA</a>
+                <a><i class="fas fa-mobile"></i>+91 8770555943</a>
+                <a href="mailto:kunaljain649@gmail.com"><i class="fas fa-envelope"></i>kunaljain649@gmail.com</a>
+            </div>
+        </div>
+        <div class="cus">
+            <h2 class="titles">Send message</h2>
+            <form #query="ngForm" action="#">
+                <div class="form-group">
+                    <div class="group">
+                        <label for="fname">Full Name</label>
+                        <div>
+                            <input type="text" name="fname" id="fname" #name="ngModel" pattern="[a-zA-Z' ']{1,20}"
+                                [class.notvalid]="name.invalid && name.touched" required autocomplete="off"
+                                class="form-control" ngModel>
+                            <div *ngIf="name.errors && (name.valid || name.touched)">
+                                <small class="text-danger" *ngIf="name.errors.required">Name is required</small>
+                                <small class="text-danger" *ngIf="name.errors.pattern">Should only contain alphabets
+                                    (A-Z,a-z)</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="group">
+                        <label for="mail">Email ID</label>
+                        <div>
+                            <input type="email" id="mail" name="mail" #mail="ngModel"
+                                [class.notvalid]="mail.invalid && mail.touched"
+                                pattern="[A-Za-z\d\._-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,5})(\.[a-zA-Z]{2,5})?" required
+                                autocomplete="off" class="form-control" ngModel>
+                            <div *ngIf="mail.errors && (mail.valid || mail.touched)">
+                                <small class="text-danger" *ngIf="mail.errors.required">Email ID is required</small>
+                                <small class="text-danger" *ngIf="mail.errors.pattern">Invalid email address</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="group">
+                        <label for="mob">Mobile Number</label>
+                        <div>
+                            <input type="tel" id="mob" name="mob" #mob="ngModel"
+                                [class.notvalid]="mob.invalid && mob.touched" pattern="[0-9]{1,10}" minlength="10"
+                                maxlength="10" autocomplete="off" class="form-control" ngModel>
+                            <div *ngIf="mob.errors && (mob.valid || mob.touched)">
+                                <small class="text-danger" *ngIf="mob.errors.minlength || mob.errors.pattern">Invalid
+                                    mobile number</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="group">
+                        <label for="msg">Message</label>
+                        <div>
+                            <textarea required id="msg" #msg="ngModel" ngModel
+                                [class.notvalid]="msg.invalid && msg.touched" name="msg"
+                                class="form-control"></textarea>
+                            <div *ngIf="msg.invalid && msg.touched">
+                                <small class="text-danger" [class.d-none]="msg.valid || msg.untouched">Message content
+                                    is
+                                    required</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="form-control sub" (click)="untouch(query.form)">
+                        <i class="fas fa-paper-plane"></i> SEND
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
 <footer>
     <div class="intro">
@@ -39,9 +471,11 @@
         <a target="_blank" href="https://www.github.com/kunal2899"><i class="fab fa-github"></i></a>
         <a target="_blank" href="https://www.linkedin.com/in/kunal-j-945756b6/"><i class="fab fa-linkedin"></i></a>
         <a target="_blank"
-            href="http://wa.me/917566696939?text=Drop%20your%20message%20here.%0A%0AName%3A%0AEmail%3A"><i class="fab fa-whatsapp"></i></a>
+            href="http://wa.me/917566696939?text=Drop%20your%20message%20here.%0A%0AName%3A%0AEmail%3A"><i
+                class="fab fa-whatsapp"></i></a>
     </div>
     <div class="copy">
-        <h4>Copyright &copy;2021 Kunal | Designed by Kunal</h4>
+        <h4>Copyright <i class="far fa-copyright"></i>2021 <p>{{title}}</p> | All rights reserved | Designed by Kunal
+        </h4>
     </div>
 </footer>
