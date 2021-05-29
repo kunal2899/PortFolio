@@ -4,17 +4,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  firebaseConfig : {
-    apiKey: "AIzaSyCbpQ8xg2k8ww16CqsMFg9KpyCPZYIsqmg",
-    authDomain: "kunal-j.firebaseapp.com",
-    databaseURL: "https://kunal-j-default-rtdb.firebaseio.com",
-    projectId: "kunal-j",
-    storageBucket: "kunal-j.appspot.com",
-    messagingSenderId: "52335493042",
-    appId: "1:52335493042:web:38e2f6842c0e34bfff2eab",
-    measurementId: "G-JPECTGEZXT"
-  }
+  production: true
 };
 
 /*

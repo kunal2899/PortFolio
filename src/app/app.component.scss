@@ -6,6 +6,11 @@ $fcolor : rgba(255, 255, 255, 0.671);
     -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
 }
 
+button a{
+    color: white;
+    text-decoration: none;
+}
+
 @mixin flexLayout{
     display: flex;
     align-items: center;
@@ -271,9 +276,6 @@ section{
     grid-template-columns: 50% 50%;
     // display: flex;
     align-items: center;
-    background-attachment: scroll;
-    background: url('../assets/back.jpg') fixed;
-    background-size: cover;
     background:black;
     padding-left: 3%;
     .scrolldown{
