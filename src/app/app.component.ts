@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SendService } from './send.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 export class content {
   constructor(
@@ -18,6 +19,16 @@ export class content {
   }
 }
 
+class project {
+  constructor(
+    public name: string,
+    public bg: string,
+    public link: string,
+    public details: string,
+    public tech: string[],
+  ) { }
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -27,7 +38,60 @@ export class AppComponent {
   title = 'PortFolio';
   s;
 
+  projects = [
+    new project('EasyNotes', '../assets/projects/easynotes/logo.png',
+      "https://easynotes-en.herokuapp.com/",
+      'A notes manager, in which you can create your notes either by typing or dictating it\'s content, you can pin your important notes,create colour-coded notes and manage it anytime & anywhere',
+      ['Angular', 'Sass', 'Django', 'Firebase', 'jQuery', 'Python','SpeechRecognition']),
+    new project('AcuteVision', '../assets/projects/forweb/logo.jpeg',
+      "https://github.com/kunal2899/AcuteVision",
+      'A smart attendance application available for both students and teachers where student can track their attendance status in every aspect and teacher can take attendance just by one click through face recognition.',
+      ['Angular', 'Sass', 'Django', 'OpenCV', 'Python', 'jQuery']),
+    new project('AccSoftware', '../assets/projects/accsoft/logo.png',
+      "https://github.com/kunal2899/AccSoftware",
+      'An account management software where you can manage your daily expenses and source of incomes. It has various features by which you can analyse your every month expenses and manage it.',
+      ['Angular', 'Sass', 'jQuery', 'Spring', 'Java', 'MySQL']),
+    new project('GradAlly', '../assets/projects/gradally/logo.png',
+      "https://github.com/kunal2899/GradAlly",
+      'A portal designed for students where they can buy/sell used books, the aim of developing this to unite students so they can found everything need at one place.',
+      ['HTML5', 'CSS3', 'JavaScript', 'Spring', 'Java', 'MySQL']),
+      new project('ScorePanel', '../assets/projects/scorepanel/logo.png',
+      "https://kunal2899.github.io/scorepanel",
+      'A real time score calculator application, in which you can keep track of runs/wickets/balls after each ball, this app is useful for clean-and-fair game with nearly zero chances of any cheating done in run calculation.',
+      ['HTML5', 'CSS3', 'JavaScript']),
+  ]
+
   c: content = new content('', '', '', '');
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dotsSpeed: 700,
+    autoplay: true,
+    autoplaySpeed: 500,
+    autoplayHoverPause: true,
+    autoplayTimeout: 4000,
+    dots: true,
+    navSpeed: 700,
+    navText: ['',''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      740: {
+        items: 2
+      },
+      940:{
+        items: 3
+      },
+      1000: {
+        items: 4
+      }
+    },
+    nav: true
+  }
 
 
   constructor(private service: SendService) {
@@ -44,6 +108,14 @@ export class AppComponent {
     }
 
     jQuery(function () {
+
+      let op = document.createElement('i');
+      let on = document.createElement('i');
+      $(op).addClass(['fas','fa-angle-left']);
+      $('.owl-prev').append(op);
+      $(on).addClass(['fas','fa-angle-right']);
+      $('.owl-next').append(on);
+
       if (window.scrollY > 20) {
         $('.toolbar').addClass('scroll');
       } else {
@@ -112,7 +184,7 @@ export class AppComponent {
         }
       })
       gsap.from('.wic', {
-        x: window.innerWidth-300, scrollTrigger: {
+        x: window.innerWidth - 300, scrollTrigger: {
           trigger: '.services',
           start: 'top bottom',
           scrub: 3
@@ -314,7 +386,7 @@ export class AppComponent {
         startDelay: 500,
       });
 
-      $('img').on('contextmenu',function(){
+      $('img').on('contextmenu', function () {
         return false;
       })
 
@@ -411,18 +483,18 @@ export class AppComponent {
         $('nav .nav_links').children().children().removeClass('active');
         $('.marker').css('width', 0).css('opacity', 0);
       });
-      $('.menu-btn').on('click',function(){
-          if($(this).hasClass('open')){
-            $(this).removeClass('open');
-            $('.expand').css('transform','translateY(-100%)');
-          }else{
-            $(this).addClass('open');
-            $('.expand').css('transform','translateY(0)');
-          }
+      $('.menu-btn').on('click', function () {
+        if ($(this).hasClass('open')) {
+          $(this).removeClass('open');
+          $('.expand').css('transform', 'translateY(-100%)');
+        } else {
+          $(this).addClass('open');
+          $('.expand').css('transform', 'translateY(0)');
+        }
       });
-      $('.expand nav ul li a').on('click',function(){
+      $('.expand nav ul li a').on('click', function () {
         $('.menu-btn').removeClass('open');
-        $('.expand').css('transform','translateY(-100%)');
+        $('.expand').css('transform', 'translateY(-100%)');
       })
     });
   }
@@ -455,25 +527,27 @@ export class AppComponent {
 
 
       this.service.sendMessage(record).then(
-        res=>{
-            f.reset();
-            console.log(res)
-            $('.form-group button i').removeClass('fa-circle-notch').addClass('fa-check-circle').css('animation', 'none');
-            $('.form-group button span').text("SENT");
-            setTimeout(() => {
-              $('.form-group button i').removeClass('fa-check-circle').addClass('fa-paper-plane');
-              $('.form-group button span').text("SEND");
-            }, 2000)
+        res => {
+          f.reset();
+          console.log(res)
+          $('.form-group button i').removeClass('fa-circle-notch').addClass('fa-check-circle').css('animation', 'none');
+          $('.form-group button span').text("SENT");
+          setTimeout(() => {
+            $('.form-group button i').removeClass('fa-check-circle').addClass('fa-paper-plane');
+            $('.form-group button span').text("SEND");
+          }, 2000)
         }
       ).catch(
-        error =>{
-            console.log(error)
-            f.reset();
-            this.showError = true
-            setTimeout(()=>{this.showError = false
-            this.spin = false},2000)
-            $('.form-group button span').text("SEND");
-      });
+        error => {
+          console.log(error)
+          f.reset();
+          this.showError = true
+          setTimeout(() => {
+            this.showError = false
+            this.spin = false
+          }, 2000)
+          $('.form-group button span').text("SEND");
+        });
     }
   }
 

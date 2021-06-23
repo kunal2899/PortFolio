@@ -2,6 +2,7 @@ $main: #181818;
 $primary: #202020;
 $middle: #2e2e2e;
 $secondary: #eb4b2f;
+$tcolor: #d44b33;
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@100;200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&display=swap');
@@ -32,4 +33,64 @@ html{
 
 body{
     background: $main;
+}
+
+.owl-dots{
+  text-align: center;
+  margin-top: 20px;
+  .owl-dot{
+    span{
+      opacity: 0;
+    }
+      height: 13px;
+      width: 13px;
+      margin: 0 5px;
+      outline: none !important;
+      border-radius: 50%;
+      border: 2px solid $tcolor !important;
+      transition: all 0.3s ease;
+      &.active{
+          width: 35px;
+          border-radius: 14px;
+      }
+      &.active,&:hover{
+          background: $tcolor !important;
+      }
+  }
+}
+
+.owl-nav{
+  .owl-prev{
+    float: left;
+    width: 45px;
+    height: 45px;
+    margin-left: 50px !important;
+    background: none !important;
+    border: 3px solid $tcolor !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-content: center !important;
+    justify-content: center !important;
+    i{
+      color: rgba(255, 255, 255, 0.753);
+      font-size: 30px;
+    }
+  }
+  .owl-next{
+    @extend .owl-prev;
+    float: right;
+    margin-left: 0 !important;
+    margin-right: 50px !important;
+  }
+}
+@media screen and (max-width: 600px){
+  .projects{
+      .project-box{
+          .project-main{
+              .caption{
+                  transform: translate(-50%,30px);
+              }
+          }
+      }
+  }
 }

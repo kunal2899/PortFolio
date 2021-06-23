@@ -339,7 +339,7 @@ section{
         right: 0;
         bottom: 0;
         margin: 0;
-        opacity: 0.75;
+        opacity: 0.8;
         overflow: hidden;
         img{
             height: 650px;
@@ -577,10 +577,7 @@ section{
     .box{
         margin: 50px;
         margin-top: 80px;
-        // border: 1px solid white;
-        // height: 60vh;
         .project-box{
-            display: flex;
             margin-top: 70px;
             margin-bottom: 70px;
             align-items: center;
@@ -592,16 +589,17 @@ section{
                     opacity: 1;
                 }
                 &:hover .caption h2{
-                    transform: translateY(0);
+                    transform: translateY(-30px);
+                    opacity: 1;
                     transition-delay: 0.2s;
                 }
                 &:hover .caption p{
-                    transform: translateY(0);
+                    transform: translateY(-30px);
                     opacity: 1;
                     transition-delay: 0.3s;
                 }
                 &:hover .caption .tech{
-                    transform: translateY(0);
+                    transform: translateY(-30px);
                     opacity: 1;
                     transition-delay: 0.3s;
                 }
@@ -612,9 +610,10 @@ section{
                 }
                 .caption{
                     position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-45%);
+                    width: 300px;
                     padding: 30px;
                     height: 100%;
                     z-index: 1;
@@ -627,6 +626,7 @@ section{
                         font-family: 'Poppins';
                         text-align: left;
                         font-weight: 600;
+                        opacity: 0;
                         letter-spacing: 2px;
                         transition: 0.5s;
                     }
@@ -634,6 +634,7 @@ section{
                         transform: translateY(300px);
                         font-weight: 300;
                         opacity: 0;
+                        font-size: 14px;
                         transition: 0.5s;
                         small{
                             font-size: 14px;
@@ -643,6 +644,7 @@ section{
                     .tech{
                         transform: translateY(300px);
                         transition: .5s;
+                        margin-right: -20px;
                         opacity: 0;
                     }
                     a{
@@ -651,6 +653,7 @@ section{
                         text-decoration: none;
                         padding: 10px 15px;
                         border: none;
+                        margin-top: -20px;
                         color: black;
                         text-shadow: none;
                         border-radius: 50px;
@@ -673,12 +676,16 @@ section{
                     }
                 }
                 .project{
-                    width: 350px;
+                    width: 300px;
                     position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
                     height: 350px;
                     border-radius: 10px;
                     margin-bottom: 60px;
                     transition: 0.25s;
+                    overflow: hidden;
+                    background: linear-gradient(to top,rgb(29, 29, 29),rgb(49, 49, 49));
                     &::before{
                         content: '';
                         position: absolute;
@@ -694,21 +701,21 @@ section{
                         opacity: 0;
                     }
                 }
-                .p1{
-                    background: url("../assets/projects/forweb/logo.jpeg");
-                    background-position: center;
-                    background-size: cover;
-                }
-                .p2{
-                    background: url("../assets/projects/gradally/new.png");
-                    background-position: center;
-                    background-size: cover;
-                }
-                .p3{
-                    background: url("../assets/projects/accsoft/logo.png");
-                    background-position: center;
-                    background-size: cover;
-                }
+                // .p1{
+                //     background: url("../assets/projects/forweb/logo.jpeg");
+                //     background-position: center;
+                //     background-size: cover;
+                // }
+                // .p2{
+                //     background: url("../assets/projects/gradally/new.png");
+                //     background-position: center;
+                //     background-size: cover;
+                // }
+                // .p3{
+                //     background: url("../assets/projects/accsoft/logo.png");
+                //     background-position: center;
+                //     background-size: cover;
+                // }
             }
         }
     }
@@ -1014,27 +1021,6 @@ footer{
                 justify-content: center;
                 transition: all 0.3s ease;
             }
-        }
-    }
-}
-
-.owl-dots{
-    text-align: center;
-    margin-top: 20px;
-    .owl-dot{
-        height: 13px;
-        width: 13px;
-        margin: 0 5px;
-        outline: none!important;
-        border-radius: 50%;
-        border: 2px solid $tcolor!important;
-        transition: all 0.3s ease;
-        &.active{
-            width: 35px;
-            border-radius: 14px;
-        }
-        &.active,&:hover{
-            background: $tcolor!important;
         }
     }
 }

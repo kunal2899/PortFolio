@@ -7,8 +7,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from 'src/environments/environment';
 import { SendService } from './send.service';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCbpQ8xg2k8ww16CqsMFg9KpyCPZYIsqmg",
@@ -32,7 +33,9 @@ const firebaseConfig = {
     NgbModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    CarouselModule,
+    BrowserAnimationsModule
   ],
   providers: [SendService],
   bootstrap: [AppComponent]

@@ -18,17 +18,18 @@
         <a (click)="toContactUs()" id="contactus" class="contact">Contact us</a>
     </div>
     <div class="d-lg-none d-block d-xl-none">
-        <div class="menu-btn"> <!-- d-lg-none d-block d-xl-none -->
+        <div class="menu-btn">
+            <!-- d-lg-none d-block d-xl-none -->
             <span class="burger"></span>
-    </div>
+        </div>
     </div>
 </header>
 <div class="expand">
     <nav class="d-block d-lg-none">
         <ul>
-            <li><a (click)="toHome()" class="h active" >Home</a></li>
-            <li><a (click)="toAboutUs()" class="au" >About</a></li>
-            <li><a (click)="toServices()" class="se" >Services</a></li>
+            <li><a (click)="toHome()" class="h active">Home</a></li>
+            <li><a (click)="toAboutUs()" class="au">About</a></li>
+            <li><a (click)="toServices()" class="se">Services</a></li>
             <li><a (click)="toSkills()" class="s">Skills</a></li>
             <li><a (click)="toProjects()" class="p">Projects</a></li>
             <li><a (click)="toTeam()" class="t">Team</a></li>
@@ -49,13 +50,13 @@
 <section class="main" id="h">
     <div class="scrolldown"><span>Scroll Down </span><i class="fas fa-angle-right"></i><i
             class="fas fa-angle-right"></i></div>
-            <div class="intro" id="intro">
-                <h3>Hey, I'm<span>Kunal Jain</span></h3>
-                <h4>A <span id="animate"></span></h4>
-            </div>
-            <div class="image d-none d-lg-block d-xl-block" id="image">
-                <img src="../assets/4-min.png" class="img-responsive" alt="hey">
-            </div>
+    <div class="intro" id="intro">
+        <h3>Hey, I'm<span>Kunal Jain</span></h3>
+        <h4>A <span id="animate"></span></h4>
+    </div>
+    <div class="image d-none d-lg-block d-xl-block" id="image">
+        <img src="../assets/4-min.png" class="img-responsive" alt="hey">
+    </div>
 </section>
 <section class="about" id="au">
     <h1 class="shead wim">who i am</h1>
@@ -79,7 +80,8 @@
                 <button><i class="fab fa-whatsapp"></i> Drop a message</button>
                 </div> -->
             <div class="col-md-6 center col-12">
-                <button><a href="https://drive.google.com/uc?export=download&id=1xc59l14xEhDelU9Sk8_YHLgcROaRA_ef" target="_blank"><i class="fas fa-file-download"></i> Download Resume</a></button>
+                <!-- "https://drive.google.com/uc?export=download&id=1xc59l14xEhDelU9Sk8_YHLgcROaRA_ef" -->
+                <button><a href="../assets/Kunal-Jain.pdf" target="_blank"><i class="fas fa-file-download"></i> Download Resume</a></button>
             </div>
         </div>
     </div>
@@ -266,87 +268,38 @@
     <div class="box">
         <h2 class="titles">My projects</h2>
         <div class="project-box">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 center col-12">
-                        <div class="project-main pro3">
-                            <div class="project p3">
-                            </div>
-                            <div class="caption">
-                                <h2>AccSoftware</h2>
-                                <p>An account management software where you can manage your daily expenses and source of
-                                    incomes. It has various features by which you can analyse your every month expenses
-                                    and manage it.</p>
-                                <div class="tech">
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Angular</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Sass</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">jQuery</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Spring</div><br>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Java</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">MySQL</div>
-                                </div>
-                                <a href="https://github.com/kunal2899/AccSoftware" class="float-right">Check it out<i
-                                        class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 center col-12">
+            <owl-carousel-o [options]="customOptions">
+                <ng-container *ngFor="let p of projects">
+                    <ng-template carouselSlide>
                         <div class="project-main pro1">
-                            <div class="project p1">
+                            <div class="project">
+                                <!-- [style.background]="'url('+'../assets/projects/accsoft/logo.png'+') 50% 50%'" -->
+                                <img [attr.src]="p.bg" height="325px" width="300px">
                             </div>
                             <div class="caption">
-                                <h2>AcuteVision</h2>
-                                <p>A smart attendance application available for both students and teachers where student
-                                    can track their attendance status in every aspect and teacher can take attendance
-                                    just by one click through face recognition.</p>
+                                <h2>{{p.name}}</h2>
+                                <p>{{p.details}}</p>
                                 <div class="tech">
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Angular</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Sass</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">jQuery</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Python</div><br>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Django</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">OpenCV</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1" *ngFor="let t of p.tech">{{t}}</div>
                                 </div>
-                                <a class="float-right" href="https://github.com/kunal2899/acutevision">Check it out<i
-                                        class="fab fa-github"></i></a>
+                                <a href="{{p.link}}" target="_blank" class="float-right">Check it out</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 center col-12">
-                        <div class="project-main pro2">
-                            <div class="project p2">
-                            </div>
-                            <div class="caption">
-                                <h2>GradAlly</h2>
-                                <p>A portal designed for students where they can buy/sell used books, the aim of
-                                    developing this to unite students so they can found everything need at one place.
-                                </p>
-                                <div class="tech">
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">HTML</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">CSS</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">JavaScript</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Java</div><br>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">Spring</div>
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1">MySQL</div>
-                                </div>
-                                <a class="float-right" href="https://github.com/kunal2899/gradally">Check it out<i
-                                        class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="project p3">
+                    </ng-template>
+                </ng-container>
+            </owl-carousel-o>
+        </div>
+
+        <!-- <div class="project p3">
 
             </div> -->
-        </div>
     </div>
 </section>
 <section class="teams" id="t">
     <h1 class="shead wwm">Who's with me</h1>
     <h2 class="titles">
         My team</h2>
-    <div class="carousel owl-carousel container">
+    <div class="carousel container">
         <div class="row">
             <div class="col-lg-4 col-md-12 col-12 center">
                 <div class="card c1">
@@ -401,14 +354,11 @@
                 <div class="card c3">
                     <div class="box">
                         <div class="image">
-                            <!-- <img src="../assets/team/muskan.jpg"
-                             style="width: auto; transform: translateX(-80px);" alt=""> -->
-                            <i style="font-size: 6em; margin-top: 25px;" class="fas fa-question"></i>
+                            <i style="font-size: 7.5em; margin-top: 25px;" class="fad fa-user-tie"></i>
                         </div>
                         <div class="text">
-                            Finding someone</div>
-                        <p> You want to in ?
-                            <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+                            Need MERN/MEAN stack developer</div>
+                        <p> If interested then,
                         </p>
                         <input type="button" style="cursor: pointer;" (click)="toContactUs()" class="apply"
                             value="Drop me a message">
@@ -432,93 +382,98 @@
     <h1 class="shead gito">Get in touch</h1>
     <div class="both container-fluid">
         <div class="row">
-        <div class="col-lg-6 col-12">
-            <div class="cus l h-100">
-                <h2 class="titles">Contact me</h2>
-                <div class="cont">
-                    <a><i class="fas fa-location-arrow"></i>Bhopal, INDIA</a>
-                    <a><i class="fas fa-mobile"></i>+91 8770555943</a>
-                    <a href="mailto:kunaljain649@gmail.com"><i class="fas fa-envelope"></i>kunaljain649@gmail.com</a>
+            <div class="col-lg-6 col-12">
+                <div class="cus l h-100">
+                    <h2 class="titles">Contact me</h2>
+                    <div class="cont">
+                        <a><i class="fas fa-location-arrow"></i>Bhopal, INDIA</a>
+                        <a><i class="fas fa-mobile"></i>+91 8770555943</a>
+                        <a href="mailto:kunaljain649@gmail.com"><i
+                                class="fas fa-envelope"></i>kunaljain649@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <div class="cus r h-100">
+                    <h2 class="titles">Send message</h2>
+                    <form #query="ngForm" (ngSubmit)="send(query.form)">
+                        <div class="form-group">
+                            <div class="group">
+                                <label for="fname">Full Name</label>
+                                <div>
+                                    <input type="text" name="fname" id="fname" #name="ngModel"
+                                        pattern="[a-zA-Z' ']{1,20}" [class.notvalid]="name.invalid && name.touched"
+                                        required autocomplete="off" class="form-control" [(ngModel)]="c.name">
+                                    <div *ngIf="name.errors && (name.valid || name.touched)">
+                                        <small class="text-danger" *ngIf="name.errors.required">Name is required</small>
+                                        <small class="text-danger" *ngIf="name.errors.pattern">Should only contain
+                                            alphabets
+                                            (A-Z,a-z)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="group">
+                                <label for="mail">Email ID</label>
+                                <div>
+                                    <input type="email" id="mail" name="mail" #mail="ngModel"
+                                        [class.notvalid]="mail.invalid && mail.touched"
+                                        pattern="[A-Za-z\d\._-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,5})(\.[a-zA-Z]{2,5})?"
+                                        required autocomplete="off" class="form-control" [(ngModel)]="c.email">
+                                    <div *ngIf="mail.errors && (mail.valid || mail.touched)">
+                                        <small class="text-danger" *ngIf="mail.errors.required">Email ID is
+                                            required</small>
+                                        <small class="text-danger" *ngIf="mail.errors.pattern">Invalid email
+                                            address</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="group">
+                                <label for="mob">Mobile Number</label>
+                                <div>
+                                    <input type="text" id="mob" name="mob" #mob="ngModel"
+                                        [class.notvalid]="mob.invalid && mob.touched" pattern="[0-9]{1,10}"
+                                        minlength="10" maxlength="10" autocomplete="off" class="form-control"
+                                        [(ngModel)]="c.mobile">
+                                    <div *ngIf="mob.errors && (mob.valid || mob.touched)">
+                                        <small class="text-danger"
+                                            *ngIf="mob.errors.minlength || mob.errors.pattern">Invalid
+                                            mobile number</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="group">
+                                <label for="msg">Message</label>
+                                <div>
+                                    <textarea required id="msg" #msg="ngModel" ngModel
+                                        [class.notvalid]="msg.invalid && msg.touched" name="msg" class="form-control"
+                                        [(ngModel)]="c.message"></textarea>
+                                    <div *ngIf="msg.invalid && msg.touched">
+                                        <small class="text-danger" [class.d-none]="msg.valid || msg.untouched">Message
+                                            content
+                                            is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control sub" (click)="untouch(query.form)">
+                                <i class="fas fa-paper-plane" *ngIf="!spin"></i>
+                                <i class="fas fa-circle-notch" *ngIf="spin"></i><span>SEND</span>
+                            </button>
+                        </div>
+                    </form>
+                    <div *ngIf="showError" class="crc text-danger">Some error occured, Please try again later
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-12">
-            <div class="cus r h-100">
-                <h2 class="titles">Send message</h2>
-                <form #query="ngForm" (ngSubmit)="send(query.form)">
-                    <div class="form-group">
-                        <div class="group">
-                            <label for="fname">Full Name</label>
-                            <div>
-                                <input type="text" name="fname" id="fname" #name="ngModel" pattern="[a-zA-Z' ']{1,20}"
-                                    [class.notvalid]="name.invalid && name.touched" required autocomplete="off"
-                                    class="form-control" [(ngModel)]="c.name">
-                                <div *ngIf="name.errors && (name.valid || name.touched)">
-                                    <small class="text-danger" *ngIf="name.errors.required">Name is required</small>
-                                    <small class="text-danger" *ngIf="name.errors.pattern">Should only contain alphabets
-                                        (A-Z,a-z)</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="group">
-                            <label for="mail">Email ID</label>
-                            <div>
-                                <input type="email" id="mail" name="mail" #mail="ngModel"
-                                    [class.notvalid]="mail.invalid && mail.touched"
-                                    pattern="[A-Za-z\d\._-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,5})(\.[a-zA-Z]{2,5})?" required
-                                    autocomplete="off" class="form-control" [(ngModel)]="c.email">
-                                <div *ngIf="mail.errors && (mail.valid || mail.touched)">
-                                    <small class="text-danger" *ngIf="mail.errors.required">Email ID is required</small>
-                                    <small class="text-danger" *ngIf="mail.errors.pattern">Invalid email address</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="group">
-                            <label for="mob">Mobile Number</label>
-                            <div>
-                                <input type="text" id="mob" name="mob" #mob="ngModel"
-                                    [class.notvalid]="mob.invalid && mob.touched" pattern="[0-9]{1,10}" minlength="10"
-                                    maxlength="10" autocomplete="off" class="form-control" [(ngModel)]="c.mobile">
-                                <div *ngIf="mob.errors && (mob.valid || mob.touched)">
-                                    <small class="text-danger"
-                                        *ngIf="mob.errors.minlength || mob.errors.pattern">Invalid
-                                        mobile number</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="group">
-                            <label for="msg">Message</label>
-                            <div>
-                                <textarea required id="msg" #msg="ngModel" ngModel
-                                    [class.notvalid]="msg.invalid && msg.touched" name="msg" class="form-control"
-                                    [(ngModel)]="c.message"></textarea>
-                                <div *ngIf="msg.invalid && msg.touched">
-                                    <small class="text-danger" [class.d-none]="msg.valid || msg.untouched">Message
-                                        content
-                                        is
-                                        required</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="form-control sub" (click)="untouch(query.form)">
-                            <i class="fas fa-paper-plane" *ngIf="!spin"></i>
-                            <i class="fas fa-circle-notch" *ngIf="spin"></i><span>SEND</span>
-                        </button>
-                    </div>
-                </form>
-                <div *ngIf="showError" class="crc text-danger">Some error occured, Please try again later
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
 </section>
 <footer>
