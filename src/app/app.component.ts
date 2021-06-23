@@ -21,6 +21,7 @@ export class content {
 
 class project {
   constructor(
+    public id: number,
     public name: string,
     public bg: string,
     public link: string,
@@ -39,23 +40,23 @@ export class AppComponent {
   s;
 
   projects = [
-    new project('EasyNotes', '../assets/projects/easynotes/logo.png',
+    new project(1,'EasyNotes', '../assets/projects/easynotes/logo.png',
       "https://easynotes-en.herokuapp.com/",
       'A notes manager, in which you can create your notes either by typing or dictating it\'s content, you can pin your important notes,create colour-coded notes and manage it anytime & anywhere',
       ['Angular', 'Sass', 'Django', 'Firebase', 'jQuery', 'Python','SpeechRecognition']),
-    new project('AcuteVision', '../assets/projects/forweb/logo.jpeg',
+    new project(2,'AcuteVision', '../assets/projects/forweb/logo.jpeg',
       "https://github.com/kunal2899/AcuteVision",
       'A smart attendance application available for both students and teachers where student can track their attendance status in every aspect and teacher can take attendance just by one click through face recognition.',
       ['Angular', 'Sass', 'Django', 'OpenCV', 'Python', 'jQuery']),
-    new project('AccSoftware', '../assets/projects/accsoft/logo.png',
+    new project(3,'AccSoftware', '../assets/projects/accsoft/logo.png',
       "https://github.com/kunal2899/AccSoftware",
       'An account management software where you can manage your daily expenses and source of incomes. It has various features by which you can analyse your every month expenses and manage it.',
       ['Angular', 'Sass', 'jQuery', 'Spring', 'Java', 'MySQL']),
-    new project('GradAlly', '../assets/projects/gradally/logo.png',
+    new project(4,'GradAlly', '../assets/projects/gradally/logo.png',
       "https://github.com/kunal2899/GradAlly",
       'A portal designed for students where they can buy/sell used books, the aim of developing this to unite students so they can found everything need at one place.',
       ['HTML5', 'CSS3', 'JavaScript', 'Spring', 'Java', 'MySQL']),
-      new project('ScorePanel', '../assets/projects/scorepanel/logo.png',
+      new project(5,'ScorePanel', '../assets/projects/scorepanel/logo.png',
       "https://kunal2899.github.io/scorepanel",
       'A real time score calculator application, in which you can keep track of runs/wickets/balls after each ball, this app is useful for clean-and-fair game with nearly zero chances of any cheating done in run calculation.',
       ['HTML5', 'CSS3', 'JavaScript']),
@@ -63,16 +64,18 @@ export class AppComponent {
 
   c: content = new content('', '', '', '');
 
+
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: true,
+    mouseDrag: false,
     touchDrag: true,
     pullDrag: false,
     dotsSpeed: 700,
     autoplay: true,
     autoplaySpeed: 500,
     autoplayHoverPause: true,
-    autoplayTimeout: 4000,
+    autoplayMouseleaveTimeout: 1000,
+    autoplayTimeout: 2000,
     dots: true,
     navSpeed: 700,
     navText: ['',''],
@@ -155,6 +158,19 @@ export class AppComponent {
       //   markers: {startColor: "green", endColor: "red", fontSize: "20px"},
       //   once: false
       // }})
+
+      $('.caption').hover(function(){
+        let a = $(this).siblings('.project').map(function(){
+          return $(this).attr('id')
+        }).get().join(',');
+        $('.project-main').append('<style>#'+a+'::before{opacity:1 !important}</style>');
+      },
+      function(){
+        let a = $(this).siblings('.project').map(function(){
+          return $(this).attr('id')
+        }).get().join(',');
+        $('.project-main').append('<style>#'+a+'::before{opacity:0 !important}</style>');
+      })
 
       gsap.from('#intro', { x: -100, duration: .75, delay: 1.3, opacity: 0 });
       gsap.from('#image', { xPercent: 10, duration: .75, delay: 1.8, opacity: 0 });
@@ -271,20 +287,20 @@ export class AppComponent {
         }
       })
 
-      gsap.from('.pro3', {
-        x: -50, opacity: 0, duration: .75, scrollTrigger: {
-          trigger: '.projects',
-          start: 'top+=200 center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
-      gsap.from('.pro2', {
-        x: 50, opacity: 0, duration: .75, scrollTrigger: {
-          trigger: '.projects',
-          start: 'top+=200 center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
+      // gsap.from('.pro3', {
+      //   x: -50, opacity: 0, duration: .75, scrollTrigger: {
+      //     trigger: '.projects',
+      //     start: 'top+=200 center',
+      //     toggleActions: "play pause resume reverse"
+      //   }
+      // })
+      // gsap.from('.pro2', {
+      //   x: 50, opacity: 0, duration: .75, scrollTrigger: {
+      //     trigger: '.projects',
+      //     start: 'top+=200 center',
+      //     toggleActions: "play pause resume reverse"
+      //   }
+      // })
       gsap.from('.pro1', {
         y: 50, opacity: 0, duration: .75, scrollTrigger: {
           trigger: '.projects',

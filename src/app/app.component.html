@@ -272,7 +272,7 @@
                 <ng-container *ngFor="let p of projects">
                     <ng-template carouselSlide>
                         <div class="project-main pro1">
-                            <div class="project">
+                            <div [attr.id]="'pro'+p.id" class="project">
                                 <!-- [style.background]="'url('+'../assets/projects/accsoft/logo.png'+') 50% 50%'" -->
                                 <img [attr.src]="p.bg" height="325px" width="300px">
                             </div>
@@ -285,6 +285,7 @@
                                 <a href="{{p.link}}" target="_blank" class="float-right">Check it out</a>
                             </div>
                         </div>
+                        <!-- <a class="openBox" (click)="open(p.id)">open</a> -->
                     </ng-template>
                 </ng-container>
             </owl-carousel-o>
