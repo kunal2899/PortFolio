@@ -1,3 +1,19 @@
+<div class="loader">
+    <div class="loadingio-spinner-bean-eater-jpi9yekt1hb">
+        <div class="ldio-k22r9c47i9t">
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="toup" class="toup"><i class="fas fa-angle-up"></i></div>
 <header class="toolbar">
     <div class="logo">
@@ -81,7 +97,8 @@
                 </div> -->
             <div class="col-md-6 center col-12">
                 <!-- "https://drive.google.com/uc?export=download&id=1xc59l14xEhDelU9Sk8_YHLgcROaRA_ef" -->
-                <button><a href="../assets/Kunal-Jain.pdf" target="_blank"><i class="fas fa-file-download"></i> Download Resume</a></button>
+                <button><a href="../assets/Kunal-Jain.pdf" target="_blank"><i class="fas fa-file-download"></i> Download
+                        Resume</a></button>
             </div>
         </div>
     </div>
@@ -171,6 +188,37 @@
                 <div class="skill">
                     <div class="s_title">
                         <div class="name">
+                            <i class="fab fa-angular" style="color: #B52E31;"></i>Angular 9
+                        </div>
+                        <div class="percent">{{s.angular}}%</div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings angular"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name">
+                            <i class="fab fa-java" style="color: #5382a1;"></i>Java SE & EE
+                        </div>
+                        <div class="percent">{{s.java}}%</div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings java"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name"><i class="fas fa-power-off" style="color: #3C873A"></i>Spring Boot</div>
+                        <div class="percent">{{s.node}}%</div>
+                    </div>
+                    <div class="bar">
+                        <div class="fillings node"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="s_title">
+                        <div class="name">
                             <i class="fab fa-html5" style="color: #e34c26;"></i>HTML 5
                         </div>
                         <div class="percent">
@@ -209,34 +257,12 @@
                 <div class="skill">
                     <div class="s_title">
                         <div class="name">
-                            <i class="fab fa-angular" style="color: #B52E31;"></i>Angular 9+
-                        </div>
-                        <div class="percent">{{s.angular}}%</div>
-                    </div>
-                    <div class="bar">
-                        <div class="fillings angular"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="s_title">
-                        <div class="name">
                             <i class="fas fa-database" style="color: rgb(117, 117, 117);"></i>MySQL
                         </div>
                         <div class="percent">{{s.sql}}%</div>
                     </div>
                     <div class="bar">
                         <div class="fillings sql"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="s_title">
-                        <div class="name">
-                            <i class="fab fa-java" style="color: #5382a1;"></i>Java SE / Java EE
-                        </div>
-                        <div class="percent">{{s.java}}%</div>
-                    </div>
-                    <div class="bar">
-                        <div class="fillings java"></div>
                     </div>
                 </div>
                 <div class="skill">
@@ -250,15 +276,6 @@
                         <div class="fillings python"></div>
                     </div>
                 </div>
-                <!-- <div class="skill">
-                <div class="s_title">
-                    <div class="name"><i class="fab fa-node-js" style="color: #3C873A"></i>Node.js</div>
-                    <div class="percent">{{s.node}}%</div>
-                </div>
-                <div class="bar">
-                    <div class="fillings node"></div>
-                </div>
-            </div> -->
             </div>
         </div>
     </div>
@@ -280,7 +297,8 @@
                                 <h2>{{p.name}}</h2>
                                 <p>{{p.details}}</p>
                                 <div class="tech">
-                                    <div class="badge badge-dark badge-pill mr-2 mb-1" *ngFor="let t of p.tech">{{t}}</div>
+                                    <div class="badge badge-dark badge-pill mr-2 mb-1" *ngFor="let t of p.tech">{{t}}
+                                    </div>
                                 </div>
                                 <a href="{{p.link}}" target="_blank" class="float-right">Check it out</a>
                             </div>

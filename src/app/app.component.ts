@@ -6,6 +6,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SendService } from './send.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+var t;
 
 export class content {
   constructor(
@@ -38,25 +39,24 @@ class project {
 export class AppComponent {
   title = 'PortFolio';
   s;
-
   projects = [
-    new project(1,'EasyNotes', '../assets/projects/easynotes/logo.png',
+    new project(1, 'EasyNotes', '../assets/projects/easynotes/logo.png',
       "https://easynotes-en.herokuapp.com/",
       'A notes manager, in which you can create your notes either by typing or dictating it\'s content, you can pin your important notes,create colour-coded notes and manage it anytime & anywhere',
-      ['Angular', 'Sass', 'Django', 'Firebase', 'jQuery', 'Python','SpeechRecognition']),
-    new project(2,'AcuteVision', '../assets/projects/forweb/logo.jpeg',
+      ['Angular', 'Sass', 'Django', 'Firebase', 'jQuery', 'Python', 'SpeechRecognition']),
+    new project(2, 'AcuteVision', '../assets/projects/forweb/logo.jpeg',
       "https://github.com/kunal2899/AcuteVision",
       'A smart attendance application available for both students and teachers where student can track their attendance status in every aspect and teacher can take attendance just by one click through face recognition.',
       ['Angular', 'Sass', 'Django', 'OpenCV', 'Python', 'jQuery']),
-    new project(3,'AccSoftware', '../assets/projects/accsoft/logo.png',
+    new project(3, 'AccSoftware', '../assets/projects/accsoft/logo.png',
       "https://github.com/kunal2899/AccSoftware",
       'An account management software where you can manage your daily expenses and source of incomes. It has various features by which you can analyse your every month expenses and manage it.',
       ['Angular', 'Sass', 'jQuery', 'Spring', 'Java', 'MySQL']),
-    new project(4,'GradAlly', '../assets/projects/gradally/logo.png',
+    new project(4, 'GradAlly', '../assets/projects/gradally/logo.png',
       "https://github.com/kunal2899/GradAlly",
       'A portal designed for students where they can buy/sell used books, the aim of developing this to unite students so they can found everything need at one place.',
       ['HTML5', 'CSS3', 'JavaScript', 'Spring', 'Java', 'MySQL']),
-      new project(5,'ScorePanel', '../assets/projects/scorepanel/logo.png',
+    new project(5, 'ScorePanel', '../assets/projects/scorepanel/logo.png',
       "https://kunal2899.github.io/scorepanel",
       'A real time score calculator application, in which you can keep track of runs/wickets/balls after each ball, this app is useful for clean-and-fair game with nearly zero chances of any cheating done in run calculation.',
       ['HTML5', 'CSS3', 'JavaScript']),
@@ -78,7 +78,7 @@ export class AppComponent {
     autoplayTimeout: 2000,
     dots: true,
     navSpeed: 700,
-    navText: ['',''],
+    navText: ['', ''],
     responsive: {
       0: {
         items: 1
@@ -86,7 +86,7 @@ export class AppComponent {
       740: {
         items: 2
       },
-      940:{
+      940: {
         items: 3
       },
       1000: {
@@ -97,26 +97,34 @@ export class AppComponent {
   }
 
 
+
   constructor(private service: SendService) {
     let flag = 0;
-    this.s = {
+    t = {
       html: 95,
       css: 72,
       js: 69,
-      angular: 83,
+      angular: 78,
       sql: 75,
-      java: 78,
-      python: 71,
-      node: 23
+      java: 83,
+      python: 54,
+      node: 63
     }
+    this.s = t;
 
     jQuery(function () {
+      $(window).on('load', function () {
+        $('.loader').fadeOut('slow');
+        gsap.from('#intro', { x: -100, duration: .75, delay: 1.3, opacity: 0 });
+        gsap.from('#image', { xPercent: 10, duration: .75, delay: 1.8, opacity: 0 });
+        gsap.from('.scrolldown', { y: -40, duration: .75, delay: 1.8, opacity: 0 });
+      })
 
       let op = document.createElement('i');
       let on = document.createElement('i');
-      $(op).addClass(['fas','fa-angle-left']);
+      $(op).addClass(['fas', 'fa-angle-left']);
       $('.owl-prev').append(op);
-      $(on).addClass(['fas','fa-angle-right']);
+      $(on).addClass(['fas', 'fa-angle-right']);
       $('.owl-next').append(on);
 
       if (window.scrollY > 20) {
@@ -159,22 +167,22 @@ export class AppComponent {
       //   once: false
       // }})
 
-      $('.caption').hover(function(){
-        let a = $(this).siblings('.project').map(function(){
+      $('.caption').hover(function () {
+        let a = $(this).siblings('.project').map(function () {
           return $(this).attr('id')
         }).get().join(',');
-        $('.project-main').append('<style>#'+a+'::before{opacity:1 !important}</style>');
+        $('.project-main').append('<style>#' + a + '::before{opacity:1 !important}</style>');
       },
-      function(){
-        let a = $(this).siblings('.project').map(function(){
-          return $(this).attr('id')
-        }).get().join(',');
-        $('.project-main').append('<style>#'+a+'::before{opacity:0 !important}</style>');
-      })
+        function () {
+          let a = $(this).siblings('.project').map(function () {
+            return $(this).attr('id')
+          }).get().join(',');
+          $('.project-main').append('<style>#' + a + '::before{opacity:0 !important}</style>');
+        })
 
-      gsap.from('#intro', { x: -100, duration: .75, delay: 1.3, opacity: 0 });
-      gsap.from('#image', { xPercent: 10, duration: .75, delay: 1.8, opacity: 0 });
-      gsap.from('.scrolldown', { y: -40, duration: .75, delay: 1.8, opacity: 0 })
+      // gsap.from('#intro', { x: -100, duration: .75, delay: 1.3, opacity: 0 });
+      // gsap.from('#image', { xPercent: 10, duration: .75, delay: 1.8, opacity: 0 });
+      // gsap.from('.scrolldown', { y: -40, duration: .75, delay: 1.8, opacity: 0 });
 
       gsap.from('.about .box', {
         y: 20, opacity: 0, scrollTrigger: {
@@ -331,56 +339,56 @@ export class AppComponent {
       })
 
       gsap.to('.html', {
-        width: "93%", scrollTrigger: {
+        width: t["html"]+"%", scrollTrigger: {
           trigger: ".visual",
           start: "top center",
           // markers: {startColor: "green", endColor: "red", fontSize: "20px"}
         }
       }).duration(2)
       gsap.to('.css', {
-        width: "72%", scrollTrigger: {
+        width: t["css"]+"%", scrollTrigger: {
           trigger: ".visual",
           start: "top center",
           // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
         }
       }).duration(2)
       gsap.to('.js', {
-        width: "69%", scrollTrigger: {
+        width: t["js"]+"%", scrollTrigger: {
           trigger: ".visual",
           start: "top center",
           // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
         }
       }).duration(2)
       gsap.to('.angular', {
-        width: "83%", scrollTrigger: {
+        width: t["angular"]+"%", scrollTrigger: {
           trigger: ".visual",
           start: "top center",
           // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
         }
       }).duration(2)
       gsap.to('.java', {
-        width: "78%", scrollTrigger: {
+        width: t["java"]+"%", scrollTrigger: {
           trigger: ".visual",
           start: "top center",
           // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
         }
       }).duration(2)
       gsap.to('.python', {
-        width: "71%", scrollTrigger: {
+        width: t["python"]+"%", scrollTrigger: {
           trigger: ".visual",
           start: "top center",
           // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
         }
       }).duration(2)
       gsap.to('.sql', {
-        width: "75%", scrollTrigger: {
+        width: t["sql"]+"%", scrollTrigger: {
           trigger: ".visual",
           start: "top center",
           // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
         }
       }).duration(2)
       gsap.to('.node', {
-        width: "23%", scrollTrigger: {
+        width: t["node"]+"%", scrollTrigger: {
           trigger: ".visual",
           start: "top center",
           // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
