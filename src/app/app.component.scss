@@ -1,9 +1,20 @@
 $tcolor: #d44b33;
 $tfont: 'Quicksand', sans-serif;
 $fcolor : rgba(255, 255, 255, 0.671);
+
+@mixin flexLayout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   
 *{
     -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+}
+
+.soon{
+    height: calc(100% - 50px);
+    @include flexLayout();
 }
 
 .loader{
@@ -90,12 +101,6 @@ $fcolor : rgba(255, 255, 255, 0.671);
 button a{
     color: white;
     text-decoration: none;
-}
-
-@mixin flexLayout{
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .center{
@@ -367,7 +372,7 @@ section{
         height: 30px;
         opacity: 0.15;
         align-items: center;
-        font-size: 14px;
+        font-size: 15px;
         bottom: 80px;
         left: 0;
         display: flex;
@@ -377,7 +382,7 @@ section{
             margin-top: 2px;
         }
         i{
-            font-size: 25px;
+            // font-size: 25px;
             animation: down 2s infinite;
             font-weight: 300;
         }
@@ -420,7 +425,7 @@ section{
         right: 0;
         bottom: 0;
         margin: 0;
-        opacity: 0.8;
+        opacity: 0.7;
         overflow: hidden;
         img{
             height: 650px;
@@ -850,18 +855,19 @@ section{
                     font-size: 17px;
                     color: white;
                     cursor: pointer;
-                    display: block;
+                    @include flexLayout();
+                    justify-content: flex-start;
+                    margin-top: 20px;
                     text-decoration: none;
                     i{
                         width: 40px;
                         height: 40px;
                         text-align: center;
                         font-size: 20px;
-                        padding: 8px;
                         margin-right: 20px;
-                        margin-top: 20px;
                         border: 2px solid $tcolor;
                         background: $tcolor;
+                        @include flexLayout();
                         color: #1e1f22;
                         border-radius: 50%;
                     }

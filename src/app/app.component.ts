@@ -38,6 +38,7 @@ class project {
 })
 export class AppComponent {
   title = 'PortFolio';
+  currentYear = new Date().getFullYear()
   s;
   projects = [
     new project(1, 'EasyNotes', '../assets/projects/easynotes/logo.png',
@@ -57,12 +58,23 @@ export class AppComponent {
       'A portal designed for students where they can buy/sell used books, the aim of developing this to unite students so they can found everything need at one place.',
       ['HTML5', 'CSS3', 'JavaScript', 'Spring', 'Java', 'MySQL']),
     new project(5, 'ScorePanel', '../assets/projects/scorepanel/logo.png',
-      "https://kunal2899.github.io/scorepanel",
+      "https://kunal2899.github.io/ScorePanel",
       'A real time score calculator application, in which you can keep track of runs/wickets/balls after each ball, this app is useful for clean-and-fair game with nearly zero chances of any cheating done in run calculation.',
       ['HTML5', 'CSS3', 'JavaScript']),
   ]
 
   c: content = new content('', '', '', '');
+
+  skills = [
+    { name: "React", pName: "react", logoColour:"#61DBFB", className:"fab fa-react" },
+    { name: "Angular", pName: "angular", logoColour:"#B52E31", className:"fab fa-angular" },
+    { name: "HTML5", pName: "html", logoColour:"#e34c26", className:"fab fa-html5" },
+    { name: "CSS3 & Sass", pName: "css", logoColour:"#CD6799", className:"fab fa-sass" },
+    { name: "JavaScript", pName: "js", logoColour:"#F0DB4F", className:"fab fa-js-square" },
+    { name: "Java SE & EE", pName: "java", logoColour:"#5382a1", className:"fab fa-java" },
+    { name: "Spring Boot", pName: "node", logoColour:"#3C873A", className:"fas fa-leaf" },
+    { name: "SQL", pName: "sql", logoColour:"rgb(117, 117, 117)", className:"fas fa-database" },
+  ]
 
 
   customOptions: OwlOptions = {
@@ -103,22 +115,16 @@ export class AppComponent {
     t = {
       html: 95,
       css: 72,
-      js: 69,
+      js: 78,
       angular: 78,
-      sql: 75,
-      java: 83,
-      python: 54,
-      node: 63
+      sql: 65,
+      java: 76,
+      node: 58,
+      react: 86
     }
     this.s = t;
 
     jQuery(function () {
-      $(window).on('load', function () {
-        $('.loader').fadeOut('slow');
-        gsap.from('#intro', { x: -100, duration: .75, delay: 1.3, opacity: 0 });
-        gsap.from('#image', { xPercent: 10, duration: .75, delay: 1.8, opacity: 0 });
-        gsap.from('.scrolldown', { y: -40, duration: .75, delay: 1.8, opacity: 0 });
-      })
 
       let op = document.createElement('i');
       let on = document.createElement('i');
@@ -352,6 +358,13 @@ export class AppComponent {
           // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
         }
       }).duration(2)
+      gsap.to('.react', {
+        width: t["react"]+"%", scrollTrigger: {
+          trigger: ".visual",
+          start: "top center",
+          // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
+        }
+      }).duration(2)
       gsap.to('.js', {
         width: t["js"]+"%", scrollTrigger: {
           trigger: ".visual",
@@ -397,10 +410,13 @@ export class AppComponent {
 
       var typer = new Typed('#animate', {
         strings: [
+          'Software Developer',
+          'Frontend Developer',
+          'React Developer',
+          'Angular Developer',
+          'Java Developer',
           'Programmer',
-          'Backend developer',
-          'Fullstack developer',
-          'UI/UX designer'
+          'Tech Enthusiastic'
         ],
         typeSpeed: 80,
         loop: true,
@@ -601,6 +617,16 @@ export class AppComponent {
 
   toTeam() {
     document.getElementById('t').scrollIntoView();
+  }
+
+
+  ngOnInit():void{
+    $(window).on('load', function () {
+      $('.loader').fadeOut('slow');
+      gsap.from('#intro', { x: -100, duration: .75, delay: 1.3, opacity: 0 });
+      gsap.from('#image', { xPercent: 10, duration: .75, delay: 1.8, opacity: 0 });
+      gsap.from('.scrolldown', { y: -40, duration: .75, delay: 1.8, opacity: 0 });
+    })
   }
 
 }
