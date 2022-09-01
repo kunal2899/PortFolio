@@ -3,10 +3,9 @@ import * as $ from 'jquery';
 import Typed from 'typed.js';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { SendService } from './send.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-var t;
 
 export class content {
   constructor(
@@ -39,7 +38,17 @@ class project {
 export class AppComponent {
   title = 'PortFolio';
   currentYear = new Date().getFullYear()
-  s;
+  mobileWidth = window.screen.width <= 550;
+  s = {
+    html: 95,
+    css: 72,
+    js: 78,
+    angular: 78,
+    sql: 65,
+    java: 76,
+    spring: 58,
+    react: 86
+  }
   projects = [
     new project(1, 'EasyNotes', '../assets/projects/easynotes/logo.png',
       "https://easynotes-en.herokuapp.com/",
@@ -65,16 +74,72 @@ export class AppComponent {
 
   c: content = new content('', '', '', '');
 
+  skillsContent = `As I am a Frontend Developer so I have a solid grasp of fundamental
+  frontend technologies like HTML, CSS, JavaScript and I use React and
+  Angular to develop a single-page frontend application, jQuery for
+  functionalities and awesome animations, and Sass for styling. Also, I
+  learned Java EE, Spring Boot MVC, and Hibernate ORM and implemented
+  them in my full stack projects but I don't have any professional
+  experience in this. For the backend, I use MySQL Database and REST API
+  for URL breakpoint connections, also learning about the NoSQL backend
+  environment. Before a developer I am a Programmer at the first place I
+  can program in Java, Python also learned C/C++ but nowadays not making
+  use of it.`;
+
+  socials = [
+    { className: 'fab fa-facebook', link: 'https://www.facebook.com/kj.kunal.1' },
+    { className: 'fab fa-twitter', link: 'https://twitter.com/kunaljain_2000' },
+    { className: 'fab fa-instagram', link: 'https://www.instagram.com/kunalkj_/' },
+    { className: 'fab fa-github', link: 'https://www.github.com/kunal2899' },
+    { className: 'fab fa-linkedin', link: 'https://www.linkedin.com/in/kunalkj/' },
+    { className: 'fab fa-whatsapp', link: 'http://wa.me/918770555943?text=Drop%20your%20message%20here.%0A%0AName%3A%0AEmail%3A' },
+  ]
+
   skills = [
-    { name: "React", pName: "react", logoColour:"#61DBFB", className:"fab fa-react" },
+    { name: "React & Redux", pName: "react", logoColour:"#61DBFB", className:"fab fa-react" },
     { name: "Angular", pName: "angular", logoColour:"#B52E31", className:"fab fa-angular" },
     { name: "HTML5", pName: "html", logoColour:"#e34c26", className:"fab fa-html5" },
     { name: "CSS3 & Sass", pName: "css", logoColour:"#CD6799", className:"fab fa-sass" },
-    { name: "JavaScript", pName: "js", logoColour:"#F0DB4F", className:"fab fa-js-square" },
+    { name: "JavaScript & Node", pName: "js", logoColour:"#3C873A", className:"fab fa-node-js" },
     { name: "Java SE & EE", pName: "java", logoColour:"#5382a1", className:"fab fa-java" },
-    { name: "Spring Boot", pName: "node", logoColour:"#3C873A", className:"fas fa-leaf" },
+    { name: "Spring Boot", pName: "spring", logoColour:"#3C873A", className:"fas fa-leaf" },
     { name: "SQL", pName: "sql", logoColour:"rgb(117, 117, 117)", className:"fas fa-database" },
   ]
+
+  navLinks = [
+    { id: "h", eid: "home",title: "Home" },
+    { id: "au", eid: "aboutme",title: "About me" },
+    { id: "se", eid: "services",title: "Services" },
+    { id: "s", eid: "skills",title: "Skills" },
+    { id: "p", eid: "projects",title: "Projects" },
+    { id: "t", eid: "team",title: "Team" },
+  ]
+
+  services = [
+    {
+      iconClass: 'fal fa-laptop-mobile',
+      title: 'Frontend Development',
+      details:
+        'I develop a single-page efficient frontend application using React or Angular, Sass for styling, and jQuery for functionality and to make it more attractive, also Bootstrap to develop a responsive frontend layout.',
+    },
+    {
+      iconClass: 'fal fa-sidebar',
+      title: 'Fullstack Development',
+      details:
+        'I develop web applications using React and Angular as frontend, Java EE, Hibernate, REST API, SpringBoot MVC as intermediary and MySQL as backend, also learning about NoSQL backend environment.',
+    },
+    {
+      iconClass: 'fal fa-database',
+      title: 'Backend Development',
+      details:
+        'I do server side development, scripting and building a database according to data they need to store and REST API URL breakpoints in term to integrate backend with frontend.',
+    },
+    {
+      iconClass: 'fal fa-palette',
+      title: 'UI/UX Designing',
+      details: ''
+    },
+  ];
 
 
   customOptions: OwlOptions = {
@@ -108,24 +173,12 @@ export class AppComponent {
     nav: true
   }
 
+  downloadResume = () => window.open('../assets/resume/Kunal_Jain.pdf','_blank');
 
 
   constructor(private service: SendService) {
-    let flag = 0;
-    t = {
-      html: 95,
-      css: 72,
-      js: 78,
-      angular: 78,
-      sql: 65,
-      java: 76,
-      node: 58,
-      react: 86
-    }
-    this.s = t;
-
+    const t = this;
     jQuery(function () {
-
       let op = document.createElement('i');
       let on = document.createElement('i');
       $(op).addClass(['fas', 'fa-angle-left']);
@@ -157,38 +210,12 @@ export class AppComponent {
         }
       });
 
+      $(window).on('resize', ()=> {
+        if(window.screen.width <= 550 && !t.mobileWidth) t.mobileWidth = true;
+        else if(t.mobileWidth) t.mobileWidth = false;
+      })
+
       gsap.registerPlugin(ScrollTrigger)
-
-      // gsap.to('.marker',{left: $('#aboutme').offset().left - $('nav').offset().left - 20, width: $('#aboutme').css('width'), scrollTrigger:{
-      //   trigger: '.about',
-      //   start: 'top center',
-      //   // markers: {startColor: "green", endColor: "red", fontSize: "20px"},
-      //   once: false
-      // }})
-
-      // gsap.to('.marker',{left: $('#homes').offset().left - $('nav').offset().left - 20, width: $('#homes').css('width'), scrollTrigger:{
-      //   trigger: '.home',
-      //   start: 'top top',
-      //   markers: {startColor: "green", endColor: "red", fontSize: "20px"},
-      //   once: false
-      // }})
-
-      $('.caption').hover(function () {
-        let a = $(this).siblings('.project').map(function () {
-          return $(this).attr('id')
-        }).get().join(',');
-        $('.project-main').append('<style>#' + a + '::before{opacity:1 !important}</style>');
-      },
-        function () {
-          let a = $(this).siblings('.project').map(function () {
-            return $(this).attr('id')
-          }).get().join(',');
-          $('.project-main').append('<style>#' + a + '::before{opacity:0 !important}</style>');
-        })
-
-      // gsap.from('#intro', { x: -100, duration: .75, delay: 1.3, opacity: 0 });
-      // gsap.from('#image', { xPercent: 10, duration: .75, delay: 1.8, opacity: 0 });
-      // gsap.from('.scrolldown', { y: -40, duration: .75, delay: 1.8, opacity: 0 });
 
       gsap.from('.about .box', {
         y: 20, opacity: 0, scrollTrigger: {
@@ -248,35 +275,20 @@ export class AppComponent {
           scrub: 5
         }
       })
+      const serviceDefault = {
+        duration: .25, opacity: 0,
+        scrollTrigger: {
+          trigger: '.services',
+          start: 'top+=280 center',
+          toggleActions: "play pause resume reverse"
+        }
+      }
+      gsap.from('.s1', { x: -30, y: -30, ...serviceDefault})
+      gsap.from('.s2', { x: 30, y: -30, ...serviceDefault })
+      gsap.from('.s3', { x: -30, y: 30, ...serviceDefault })
+      gsap.from('.s4', { x: 30, y: 30, ...serviceDefault })
 
-      gsap.from('.s1', {
-        x: -30, y: -30, duration: .25, opacity: 0, scrollTrigger: {
-          trigger: '.services',
-          start: 'top+=280 center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
-      gsap.from('.s2', {
-        x: 30, y: -30, duration: .25, opacity: 0, scrollTrigger: {
-          trigger: '.services',
-          start: 'top+=280 center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
-      gsap.from('.s3', {
-        x: -30, y: 30, duration: .25, opacity: 0, scrollTrigger: {
-          trigger: '.services',
-          start: 'top+=280 center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
-      gsap.from('.s4', {
-        x: 30, y: 30, duration: .25, opacity: 0, scrollTrigger: {
-          trigger: '.services',
-          start: 'top+=280 center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
+      $('.s4 .soon').append('<i class="fal fa-timer mr-2"></i>Starting soon...').addClass('h5')
 
       gsap.from('.skills .smain', {
         x: -30, duration: .25, opacity: 0, scrollTrigger: {
@@ -286,35 +298,15 @@ export class AppComponent {
         }
       })
 
-      gsap.from('.contactus .l', {
-        x: -30, duration: .25, opacity: 0, scrollTrigger: {
-          trigger: '.contactus',
-          start: 'top center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
-      gsap.from('.contactus .r', {
-        x: 30, duration: .25, opacity: 0, scrollTrigger: {
-          trigger: '.contactus',
-          start: 'top center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
+      const contactDefault = { 
+        duration: .25, opacity: 0, scrollTrigger: {
+        trigger: '.contactus',
+        start: 'top center',
+        toggleActions: "play pause resume reverse"
+      }}
 
-      // gsap.from('.pro3', {
-      //   x: -50, opacity: 0, duration: .75, scrollTrigger: {
-      //     trigger: '.projects',
-      //     start: 'top+=200 center',
-      //     toggleActions: "play pause resume reverse"
-      //   }
-      // })
-      // gsap.from('.pro2', {
-      //   x: 50, opacity: 0, duration: .75, scrollTrigger: {
-      //     trigger: '.projects',
-      //     start: 'top+=200 center',
-      //     toggleActions: "play pause resume reverse"
-      //   }
-      // })
+      gsap.from('.contactus .l', { x: -30, ...contactDefault })
+      gsap.from('.contactus .r', { x: 30, ...contactDefault })
       gsap.from('.pro1', {
         y: 50, opacity: 0, duration: .75, scrollTrigger: {
           trigger: '.projects',
@@ -322,91 +314,27 @@ export class AppComponent {
           toggleActions: "play pause resume reverse"
         }
       })
-      gsap.from('.c1', {
+      gsap.from(['.c1', '.c2', '.c3'], {
         y: 40, opacity: 0, duration: .5, scrollTrigger: {
           trigger: '.teams',
           start: 'top+=200 center',
           toggleActions: "play pause resume reverse"
         }
       })
-      gsap.from('.c2', {
-        y: 40, opacity: 0, duration: .5, scrollTrigger: {
-          trigger: '.teams',
-          start: 'top+=200 center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
-      gsap.from('.c3', {
-        y: 40, opacity: 0, duration: .5, scrollTrigger: {
-          trigger: '.teams',
-          start: 'top+=200 center',
-          toggleActions: "play pause resume reverse"
-        }
-      })
+      const skillScrollTrigger = { scrollTrigger: {
+        trigger: ".visual",
+        start: "top center",
+      } }
 
-      gsap.to('.html', {
-        width: t["html"]+"%", scrollTrigger: {
-          trigger: ".visual",
-          start: "top center",
-          // markers: {startColor: "green", endColor: "red", fontSize: "20px"}
-        }
-      }).duration(2)
-      gsap.to('.css', {
-        width: t["css"]+"%", scrollTrigger: {
-          trigger: ".visual",
-          start: "top center",
-          // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
-        }
-      }).duration(2)
-      gsap.to('.react', {
-        width: t["react"]+"%", scrollTrigger: {
-          trigger: ".visual",
-          start: "top center",
-          // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
-        }
-      }).duration(2)
-      gsap.to('.js', {
-        width: t["js"]+"%", scrollTrigger: {
-          trigger: ".visual",
-          start: "top center",
-          // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
-        }
-      }).duration(2)
-      gsap.to('.angular', {
-        width: t["angular"]+"%", scrollTrigger: {
-          trigger: ".visual",
-          start: "top center",
-          // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
-        }
-      }).duration(2)
-      gsap.to('.java', {
-        width: t["java"]+"%", scrollTrigger: {
-          trigger: ".visual",
-          start: "top center",
-          // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
-        }
-      }).duration(2)
-      gsap.to('.python', {
-        width: t["python"]+"%", scrollTrigger: {
-          trigger: ".visual",
-          start: "top center",
-          // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
-        }
-      }).duration(2)
-      gsap.to('.sql', {
-        width: t["sql"]+"%", scrollTrigger: {
-          trigger: ".visual",
-          start: "top center",
-          // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
-        }
-      }).duration(2)
-      gsap.to('.node', {
-        width: t["node"]+"%", scrollTrigger: {
-          trigger: ".visual",
-          start: "top center",
-          // markers: {startColor: "green", endColor: "red", fontSize: "40px"}
-        }
-      }).duration(2)
+      gsap.to('.html', { width: `${t.s.html}%`, ...skillScrollTrigger }).duration(2)
+      gsap.to('.css', { width: `${t.s.css}%`, ...skillScrollTrigger }).duration(2)
+      gsap.to('.react', { width: `${t.s.react}%`, ...skillScrollTrigger }).duration(2)
+      gsap.to('.js', { width: `${t.s.js}%`, ...skillScrollTrigger }).duration(2)
+      gsap.to('.angular', { width: `${t.s.angular}%`, ...skillScrollTrigger }).duration(2)
+      gsap.to('.java', { width: `${t.s.java}%`, ...skillScrollTrigger }).duration(2)
+      // gsap.to('.python', { width: `${t.s.python}%`, ...skillScrollTrigger }).duration(2)
+      gsap.to('.sql', { width: `${t.s.sql}%`, ...skillScrollTrigger }).duration(2)
+      gsap.to('.spring', { width: `${t.s.spring}%`, ...skillScrollTrigger }).duration(2)
 
       var typer = new Typed('#animate', {
         strings: [
@@ -471,8 +399,6 @@ export class AppComponent {
         }
       }
 
-
-
       $(window).on('scroll', function () {
         let current = ''
         for (var i = 0; i < sections.length; i++) {
@@ -509,17 +435,9 @@ export class AppComponent {
         $('.contact').removeClass('onit');
         $(this).children('a').addClass('active')
         $(this).siblings().children('a').removeClass('active')
-        // $('.marker').css('opacity', 1).css('width', width).css('left', left)
       });
       $('.contact').on('click', function () {
         $(this).addClass('onit');
-        // let links = $('.toolbar nav li');
-        // for(var i =0;i<links.length;i++){
-        //   let link = links[i]
-        //   if($(link).children('a').hasClass('active'))
-        //     $(link).children('a').removeClass('active')
-        // }
-        // $('nav ul li').siblings().children('a').removeClass('active');
         $('nav .nav_links').children().children().removeClass('active');
         $('.marker').css('width', 0).css('opacity', 0);
       });
@@ -536,7 +454,7 @@ export class AppComponent {
         $('.menu-btn').removeClass('open');
         $('.expand').css('transform', 'translateY(-100%)');
       })
-    });
+    })
   }
 
   untouch(form) {
@@ -558,13 +476,11 @@ export class AppComponent {
       $('.form-group button span').text("SENDING");
       gsap.from('.form-group button span', { y: -30, opacity: 0 });
 
-
       var record = {};
       record['name'] = this.c.name;
       record['email'] = this.c.email;
       record['mobile'] = this.c.mobile;
       record['message'] = this.c.message;
-
 
       this.service.sendMessage(record).then(
         res => {
@@ -591,34 +507,9 @@ export class AppComponent {
     }
   }
 
-  toHome() {
-    document.getElementById('h').scrollIntoView();
+  scrollIntoView(id) {
+    document.getElementById(id).scrollIntoView();
   }
-
-  toAboutUs() {
-    document.getElementById('au').scrollIntoView();
-  }
-
-  toSkills() {
-    document.getElementById('s').scrollIntoView();
-  }
-
-  toProjects() {
-    document.getElementById('p').scrollIntoView();
-  }
-
-  toServices() {
-    document.getElementById('se').scrollIntoView();
-  }
-
-  toContactUs() {
-    document.getElementById('cu').scrollIntoView();
-  }
-
-  toTeam() {
-    document.getElementById('t').scrollIntoView();
-  }
-
 
   ngOnInit():void{
     $(window).on('load', function () {

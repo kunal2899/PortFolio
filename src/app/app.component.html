@@ -22,16 +22,11 @@
   <nav class="d-sm-none d-none d-xs-none d-md-none d-lg-block">
     <ul id="nlink" class="nav_links">
       <div class="marker"></div>
-      <li><a (click)="toHome()" class="h active" id="home">Home</a></li>
-      <li><a (click)="toAboutUs()" class="au" id="aboutme">About</a></li>
-      <li><a (click)="toServices()" class="se" id="services">Services</a></li>
-      <li><a (click)="toSkills()" class="s" id="skills">Skills</a></li>
-      <li><a (click)="toProjects()" class="p" id="projects">Projects</a></li>
-      <li><a (click)="toTeam()" class="t" id="team">Team</a></li>
+      <li *ngFor="let navLink of navLinks"><a (click)="scrollIntoView(navLink.id)" [class]="navLink.id" [id]="navLink.eid">{{navLink.title}}</a></li>
     </ul>
   </nav>
   <div class="d-none d-lg-block">
-    <a (click)="toContactUs()" id="contactus" class="contact">Contact us</a>
+    <a (click)="scrollIntoView('cu')" id="contactus" class="contact">Contact us</a>
   </div>
   <div class="d-lg-none d-block d-xl-none">
     <div class="menu-btn">
@@ -43,34 +38,12 @@
 <div class="expand">
   <nav class="d-block d-lg-none">
     <ul>
-      <li><a (click)="toHome()" class="h active">Home</a></li>
-      <li><a (click)="toAboutUs()" class="au">About</a></li>
-      <li><a (click)="toServices()" class="se">Services</a></li>
-      <li><a (click)="toSkills()" class="s">Skills</a></li>
-      <li><a (click)="toProjects()" class="p">Projects</a></li>
-      <li><a (click)="toTeam()" class="t">Team</a></li>
-      <li><a (click)="toContactUs()" class="cu">Contact</a></li>
+      <li *ngFor="let navLink of navLinks"><a (click)="scrollIntoView(navLink.id)" [class]="navLink.id" [id]="navLink.eid">{{navLink.title}}</a></li>
+      <li><a (click)="scrollIntoView('cu')" class="cu">Contact</a></li>
     </ul>
     <div class="social">
-      <a target="_blank" href="https://www.facebook.com/kj.kunal.1"
-        ><i class="fab fa-facebook"></i
-      ></a>
-      <a target="_blank" href="https://twitter.com/kunaljain_2000"
-        ><i class="fab fa-twitter"></i
-      ></a>
-      <a target="_blank" href="https://www.instagram.com/kunalkj_/"
-        ><i class="fab fa-instagram"></i
-      ></a>
-      <a target="_blank" href="https://www.github.com/kunal2899"
-        ><i class="fab fa-github"></i
-      ></a>
-      <a target="_blank" href="https://www.linkedin.com/in/kunal-j-945756b6/"
-        ><i class="fab fa-linkedin"></i
-      ></a>
-      <a
-        target="_blank"
-        href="http://wa.me/917566696939?text=Drop%20your%20message%20here.%0A%0AName%3A%0AEmail%3A"
-        ><i class="fab fa-whatsapp"></i
+      <a target="_blank" *ngFor="let social of socials" [attr.href]="social.link"
+      ><i [class]="social.className"></i
       ></a>
     </div>
   </nav>
@@ -103,19 +76,13 @@
     </p>
     <div class="panel row">
       <div class="col-md-6 center col-12">
-        <button (click)="toContactUs()">
+        <button (click)="scrollIntoView('cu')">
           <i class="fal fa-paper-plane-top"></i> Hire me
         </button>
       </div>
-      <!-- <div class="col-md-4 center col-12">
-                <button><i class="fab fa-whatsapp"></i> Drop a message</button>
-                </div> -->
       <div class="col-md-6 center col-12">
-        <!-- "https://drive.google.com/uc?export=download&id=1xc59l14xEhDelU9Sk8_YHLgcROaRA_ef" -->
-        <button>
-          <a href="../assets/resume/Kunal_Jain.pdf" target="_blank"
-            ><i class="fal fa-file-arrow-down"></i> Download Resume</a
-          >
+        <button (click)="downloadResume()">
+          <i class="fal fa-file-arrow-down"></i> Download Resume
         </button>
       </div>
     </div>
@@ -127,64 +94,14 @@
   <div class="boxes">
     <div class="container">
       <div class="row">
-        <div class="inner col-lg-6 col-12">
-          <div class="box s3">
-            <div class="photo" data-text="Frontend Development">
-              <i class="fal fa-laptop-mobile"></i>
+        <div *ngFor="let service of services; let i = index" class="inner col-lg-6 col-12">
+          <div [class]="'box s'+(i+1)">
+            <div class="photo" [attr.data-text]="service.title">
+              <i [class]="service.iconClass"></i>
             </div>
             <div class="content">
-              <h1 class="text-right mb-0">Frontend Development</h1>
-              <p class="text-right soon">
-                I develop a single-page efficient frontend application using
-                React or Angular, Sass for styling, and jQuery for functionality
-                and to make it more attractive, also Bootstrap to develop a
-                responsive frontend layout.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="inner col-lg-6 col-md-12 col-12">
-          <div class="box s1">
-            <div class="photo" data-text="FullStack Development">
-              <i class="fal fa-sidebar"></i>
-            </div>
-            <div class="content">
-              <h1 class="text-right mb-0">FullStack Development</h1>
-              <p class="text-right soon">
-                I develop web applications using React and Angular as frontend,
-                Java EE, Hibernate, REST API, SpringBoot MVC as intermediary and
-                MySQL as backend, also learning about NoSQL backend environment.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="inner col-lg-6 col-md-12 col-12">
-          <div class="box s2">
-            <div class="photo" data-text="Backend Development">
-              <i class="fal fa-database"></i>
-            </div>
-            <div class="content">
-              <h1 class="text-right mb-0">Backend Development</h1>
-              <p class="text-right soon">
-                I do server side development, scripting and building a database
-                according to data they need to store and REST API URL
-                breakpoints in term to integrate backend with frontend.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="inner col-lg-6 col-12">
-          <div class="box s4">
-            <div class="photo" data-text="UI/UX Designing">
-              <i class="fal fa-palette"></i>
-            </div>
-            <div class="content">
-              <h1 class="text-right mb-0">UI/UX Designing</h1>
-              <p class="text-center h5 soon">
-                <i class="fal fa-timer mr-2"></i>Starting soon...
-              </p>
+              <h1 class="text-right mb-0">{{service.title}}</h1>
+              <p class="text-right soon">{{service.details}}</p>
             </div>
           </div>
         </div>
@@ -198,19 +115,7 @@
     <div class="row">
       <div class="smain col-lg-6 col-12">
         <h2 class="titles">My skills</h2>
-        <p class="text-left">
-          As I am a Frontend Developer so I have a solid grasp of fundamental
-          frontend technologies like HTML, CSS, JavaScript and I use React and
-          Angular to develop a single-page frontend application, jQuery for
-          functionalities and awesome animations, and Sass for styling. Also, I
-          learned Java EE, Spring Boot MVC, and Hibernate ORM and implemented
-          them in my full stack projects but I don't have any professional
-          experience in this. For the backend, I use MySQL Database and REST API
-          for URL breakpoint connections, also learning about the NoSQL backend
-          environment. Before a developer I am a Programmer at the first place I
-          can program in Java, Python also learned C/C++ but nowadays not making
-          use of it.
-        </p>
+        <p class="text-left">{{ skillsContent }}</p>
       </div>
       <div class="visual col-lg-6 col-12">
         <ng-container *ngFor="let skill of skills">
@@ -244,8 +149,7 @@
           <ng-template carouselSlide>
             <div class="project-main pro1">
               <div [attr.id]="'pro' + p.id" class="project">
-                <!-- [style.background]="'url('+'../assets/projects/accsoft/logo.png'+') 50% 50%'" -->
-                <img [attr.src]="p.bg" height="325px" width="300px" />
+                <img [attr.src]="p.bg" height="350px" width="300px" />
               </div>
               <div class="caption">
                 <h2>{{ p.name }}</h2>
@@ -263,15 +167,10 @@
                 >
               </div>
             </div>
-            <!-- <a class="openBox" (click)="open(p.id)">open</a> -->
           </ng-template>
         </ng-container>
       </owl-carousel-o>
     </div>
-
-    <!-- <div class="project p3">
-
-            </div> -->
   </div>
 </section>
 <section class="teams" id="t">
@@ -339,7 +238,6 @@
                 href="https://www.facebook.com/profile.php?id=100063397485461"
                 ><i class="fab fa-facebook"></i
               ></a>
-              <!-- <a target="_blank" href="https://twitter.com/kunaljain_2000"><i class="fab fa-twitter"></i></a> -->
               <a target="_blank" href="https://www.instagram.com/mynk._.sharma/"
                 ><i class="fab fa-instagram"></i
               ></a>
@@ -366,20 +264,10 @@
             <input
               type="button"
               style="cursor: pointer"
-              (click)="toContactUs()"
+              (click)="scrollIntoView('cu')"
               class="apply"
               value="Drop me a message"
             />
-            <!-- <div class="sicons">
-                            <a target="_blank" href="https://www.facebook.com/profile.php?id=100003961350556"><i
-                                    class="fab fa-facebook"></i></a>
-                            <a target="_blank" href="https://twitter.com/kunaljain_2000"><i class="fab fa-twitter"></i></a>
-                            <a target="_blank" href="https://www.instagram.com/toosassy._.foryou/"><i
-                                    class="fab fa-instagram"></i></a>
-                            <a target="_blank" href="https://www.github.com/MuskanG22"><i class="fab fa-github"></i></a>
-                            <a target="_blank" href="https://www.linkedin.com/in/muskan-g-107579140/"><i
-                                    class="fab fa-linkedin"></i></a>
-                        </div> -->
           </div>
         </div>
       </div>
@@ -536,32 +424,15 @@
     <h1>kunal jain</h1>
   </div>
   <div class="social">
-    <a target="_blank" href="https://www.facebook.com/kj.kunal.1"
-      ><i class="fab fa-facebook"></i
-    ></a>
-    <a target="_blank" href="https://twitter.com/kunaljain_2000"
-      ><i class="fab fa-twitter"></i
-    ></a>
-    <a target="_blank" href="https://www.instagram.com/kunalkj_/"
-      ><i class="fab fa-instagram"></i
-    ></a>
-    <a target="_blank" href="https://www.github.com/kunal2899"
-      ><i class="fab fa-github"></i
-    ></a>
-    <a target="_blank" href="https://www.linkedin.com/in/kunalkj/"
-      ><i class="fab fa-linkedin"></i
-    ></a>
-    <a
-      target="_blank"
-      href="http://wa.me/917566696939?text=Drop%20your%20message%20here.%0A%0AName%3A%0AEmail%3A"
-      ><i class="fab fa-whatsapp"></i
+    <a target="_blank" *ngFor="let social of socials" [attr.href]="social.link"
+      ><i [class]="social.className"></i
     ></a>
   </div>
   <div class="copy">
     <h4>
       Copyright <i class="far fa-copyright"></i>{{ currentYear }}
       <p>{{ title }}</p>
-      | All rights reserved | Designed with
+      | All rights reserved<span *ngIf="!mobileWidth"> | </span><br *ngIf="mobileWidth">Designed with
       <i class="fas fa-heart text-danger"></i> by Kunal
     </h4>
   </div>
