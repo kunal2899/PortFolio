@@ -9,7 +9,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { SendService } from './send.service';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SettingsComponent } from './settings/settings.component';
+import { HomeComponent } from './home/home.component'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCbpQ8xg2k8ww16CqsMFg9KpyCPZYIsqmg",
@@ -24,7 +26,9 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SettingsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
