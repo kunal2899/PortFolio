@@ -27,7 +27,6 @@
     "gsap": "^3.6.0",
     "http-server": "^0.12.3",
     "jquery": "^3.6.0",
-    "ng-zorro-antd": "^18.1.1",
     "ngx-owl-carousel-o": "^4.1.0",
     "ngx-typed-js": "^2.0.2",
     "rxjs": "~6.6.0",
